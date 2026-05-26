@@ -40,6 +40,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
+  group = augroup('treesitter_start'),
   pattern = { 'c', 'go', 'javascript', 'jsx', 'php', 'rust', 'sh', 'tsx', 'typescript', 'zig' },
   callback = function()
     vim.treesitter.start()

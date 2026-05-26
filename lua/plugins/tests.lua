@@ -1,6 +1,6 @@
 return {
   'vim-test/vim-test',
-  dependecies = {
+  dependencies = {
     'preservim/vimux',
   },
   cmd = {

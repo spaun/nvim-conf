@@ -1,7 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
   version = '*',
-  command = 'Telescope',
+  cmd = 'Telescope',
   dependencies = {
     'nvim-lua/plenary.nvim',
     {
@@ -14,6 +14,9 @@ return {
     { '<leader>fg', '<Cmd>Telescope live_grep<CR>', desc = 'Telescope live grep' },
     { '<leader>fb', '<Cmd>Telescope buffers<CR>', desc = 'Telescope buffers' },
   },
-  opts = {
-  },
+  config = function(_, opts)
+    local telescope = require('telescope')
+    telescope.setup(opts)
+    telescope.load_extension('fzf')
+  end,
 }

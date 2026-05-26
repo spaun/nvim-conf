@@ -1,5 +1,7 @@
 return {
   'folke/lazydev.nvim',
   ft = 'lua',
-  config = true,
+  opts = {
+    library = { 'nvim-dap-ui' },
+  },
 }

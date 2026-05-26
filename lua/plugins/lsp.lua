@@ -1,15 +1,23 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    keys = {
-      { '<leader>cf', vim.lsp.buf.format, desc = 'Format buffer' },
-      { '<leader>ca', vim.lsp.buf.code_action, desc = 'Code action' },
-      { 'gd', vim.lsp.buf.definition, desc = 'Go to definition' },
-      { 'gD', vim.lsp.buf.declaration, desc = 'Go to declaration' },
-      { 'gI', vim.lsp.buf.implementation, desc = 'Go to implementation' },
-      { 'gy', vim.lsp.buf.type_definition, desc = 'Go to type definition' },
-      { 'gr', vim.lsp.buf.references, desc = 'List references' },
-    },
+    config = function()
+      vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('user_lsp_keymaps', { clear = true }),
+        callback = function(event)
+          local map = function(lhs, rhs, desc)
+            vim.keymap.set('n', lhs, rhs, { buffer = event.buf, desc = desc })
+          end
+          map('<leader>cf', vim.lsp.buf.format, 'Format buffer')
+          map('<leader>ca', vim.lsp.buf.code_action, 'Code action')
+          map('gd', vim.lsp.buf.definition, 'Go to definition')
+          map('gD', vim.lsp.buf.declaration, 'Go to declaration')
+          map('gI', vim.lsp.buf.implementation, 'Go to implementation')
+          map('gy', vim.lsp.buf.type_definition, 'Go to type definition')
+          map('gr', vim.lsp.buf.references, 'List references')
+        end,
+      })
+    end,
   },
   {
     'mason-org/mason.nvim',

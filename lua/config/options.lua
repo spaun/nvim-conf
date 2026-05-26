@@ -1,14 +1,15 @@
 vim.opt.shortmess:append({ s = true, I = true })
 
 -- Appearance
+vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
 vim.opt.cursorline = true
-vim.opt.showmode = true
+vim.opt.showmode = false
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }

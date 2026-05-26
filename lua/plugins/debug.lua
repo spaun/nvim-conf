@@ -7,14 +7,10 @@ return {
     'leoluz/nvim-dap-go',
   },
   keys = {
-    { '<leader>dt', ':DapToggleBreakpoint<CR>', desc = 'Toggle breackpoint' },
-    { '<leader>dc', ':DapContinue<CR>', desc = 'DAP Continue' },
+    { '<leader>dt', ':DapToggleBreakpoint<CR>', desc = 'Toggle breakpoint' },
+    { '<leader>dc', ':DapContinue<CR>', desc = 'DAP continue' },
   },
   config = function()
-    require('lazydev').setup({
-      library = { 'nvim-dap-ui' },
-    })
-
     require('dap-go').setup()
 
     local dap, dapui = require('dap'), require('dapui')
