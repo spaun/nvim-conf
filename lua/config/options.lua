@@ -20,18 +20,18 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.smarttab = true
 vim.opt.smartindent = true
 vim.opt.virtualedit = 'block'
 
 -- Search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
 
 -- Completion
-vim.opt.completeopt = 'menu,menuone,noselect'
+vim.opt.autocomplete = true
+vim.opt.complete = '.,w,b,u,o'
+vim.opt.completeopt = 'menu,menuone,noselect,popup'
+vim.opt.pumborder = 'rounded'
 vim.opt.pumheight = 10
 
 vim.g.mapleader = ' '

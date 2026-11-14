@@ -5,16 +5,19 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('user_lsp_keymaps', { clear = true }),
         callback = function(event)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client and client:supports_method('textDocument/completion') then
+            vim.bo[event.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+            vim.lsp.completion.enable(true, client.id, event.buf)
+          end
+
           local map = function(lhs, rhs, desc)
             vim.keymap.set('n', lhs, rhs, { buffer = event.buf, desc = desc })
           end
-          map('<leader>cf', vim.lsp.buf.format, 'Format buffer')
-          map('<leader>ca', vim.lsp.buf.code_action, 'Code action')
+
+          map('<leader>=', vim.lsp.buf.format, 'Format buffer')
           map('gd', vim.lsp.buf.definition, 'Go to definition')
           map('gD', vim.lsp.buf.declaration, 'Go to declaration')
-          map('gI', vim.lsp.buf.implementation, 'Go to implementation')
-          map('gy', vim.lsp.buf.type_definition, 'Go to type definition')
-          map('gr', vim.lsp.buf.references, 'List references')
         end,
       })
     end,

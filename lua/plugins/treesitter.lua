@@ -17,6 +17,7 @@ return {
       'javascript',
       'jsdoc',
       'json',
+      'jsx',
       'lua',
       'luadoc',
       'make',
