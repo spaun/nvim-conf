@@ -25,6 +25,7 @@ return {
       'python',
       'php',
       'phpdoc',
+      'regex',
       'rust',
       'sql',
       'toml',

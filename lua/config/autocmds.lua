@@ -48,3 +48,11 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.treesitter.start()
   end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('user_picker_completion', { clear = true }),
+  pattern = 'snacks_picker_input',
+  callback = function(event)
+    vim.bo[event.buf].autocomplete = false
+  end,
+})
